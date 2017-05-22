@@ -57,19 +57,13 @@ class CoreLayout extends React.Component {
           </Menu>
         </Sider>
         <Layout>
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb>
-              <Breadcrumb.Item href="">
-                <Icon type="home" />
-              </Breadcrumb.Item>
-              <Breadcrumb.Item href="">
-                <Icon type="user" />
-                <span>Application List</span>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                Application
-              </Breadcrumb.Item>
+          <Content className="sentry-header">
+            <Breadcrumb className="sentry-breadcrumb">
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
+          </Content>
+          <Content style={{ margin: '0 16px' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               Bill is a cat.
             </div>
