@@ -16,30 +16,36 @@ class CoreLayout extends React.Component {
       mode: 'inline'
     })
   }
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
+  onHandleToggle = () => {
+    const {
+      collapsed
+    } = this.state
+    debugger
     this.setState({
-      collapsed,
-      mode: collapsed ? 'vertical' : 'inline',
+      collapsed: !collapsed
     })
   }
   render() {
     return (
       <Layout className="sentry-layout">
         <Sider
+          className="sentry-sider"
+          trigger={null}
           collapsible
           collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}
         >
           <div className="logo" />
-          <Menu theme="dark" mode={this.state.mode} defaultSelectedKeys={['6']}>
+          <div className="menu-controler" onClick={this.onHandleToggle}><Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} /></div>
+          <Menu className="sentry-menu" theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <SubMenu
+              className="menu-sub"
               key="sub1"
-              title={<span><Icon type="user" /><span className="nav-text">User</span></span>}
+              title={<span><Icon type="caret-down" /><span className="nav-text">前端监控室</span></span>}
             >
-              <Menu.Item key="1">Tom</Menu.Item>
-              <Menu.Item key="2">Bill</Menu.Item>
-              <Menu.Item key="3">Alex</Menu.Item>
+              <Menu.Item className="menu-item" key="1">Issues</Menu.Item>
+              <Menu.Item className="menu-item" key="2">Overview</Menu.Item>
+              <Menu.Item className="menu-item" key="3">UserFeedback</Menu.Item>
+              <Menu.Item className="menu-item" key="4">Releases</Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub2"
@@ -58,7 +64,7 @@ class CoreLayout extends React.Component {
         </Sider>
         <Layout>
           <Content className="sentry-header">
-            <Breadcrumb className="sentry-breadcrumb">
+            <Breadcrumb className="header-breadcrumb">
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>

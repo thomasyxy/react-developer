@@ -5,9 +5,27 @@
     border-radius: 6px;
     margin: 16px;
   }
+  .sentry-menu {
+    .menu-controler {
+      
+    }
+    .menu-sub {
+      .menu-item {
+
+      }
+      .ant-menu-submenu-title {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+  .sentry-sider {
+
+  }
   .sentry-header {
     margin: 0 16px;
-    .sentry-breadcrumb {
+    .header-breadcrumb {
       margin: 12px 0;
     }
   }
