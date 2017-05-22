@@ -1,57 +1,77 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import assign from 'object-assign'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 const { Header, Content, Footer, Sider } = Layout
+const SubMenu = Menu.SubMenu
 // import Header from '../../components/Header'
 import './CoreLayout.scss'
 import '../../styles/core.scss'
 
 class CoreLayout extends React.Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = assign({}, props, {
-      collapsed: true
-    });
+      collapsed: false,
+      mode: 'inline'
+    })
   }
-  toggle() {
+  onCollapse = (collapsed) => {
+    console.log(collapsed);
     this.setState({
-      collapsed: !this.state.collapsed,
-    });
+      collapsed,
+      mode: collapsed ? 'vertical' : 'inline',
+    })
   }
   render() {
     return (
-      <Layout>
+      <Layout className="sentry-layout">
         <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+          collapsible
+          collapsed={this.state.collapsed}
+          onCollapse={this.onCollapse}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span className="nav-text">nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span className="nav-text">nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span className="nav-text">nav 3</span>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Icon type="user" />
-              <span className="nav-text">nav 4</span>
+          <Menu theme="dark" mode={this.state.mode} defaultSelectedKeys={['6']}>
+            <SubMenu
+              key="sub1"
+              title={<span><Icon type="user" /><span className="nav-text">User</span></span>}
+            >
+              <Menu.Item key="1">Tom</Menu.Item>
+              <Menu.Item key="2">Bill</Menu.Item>
+              <Menu.Item key="3">Alex</Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub2"
+              title={<span><Icon type="team" /><span className="nav-text">Team</span></span>}
+            >
+              <Menu.Item key="4">Team 1</Menu.Item>
+              <Menu.Item key="5">Team 2</Menu.Item>
+            </SubMenu>
+            <Menu.Item key="6">
+              <span>
+                <Icon type="file" />
+                <span className="nav-text">File</span>
+              </span>
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }} />
-          <Content style={{ margin: '24px 16px 0' }}>
+          <Content style={{ margin: '0 16px' }}>
+            <Breadcrumb>
+              <Breadcrumb.Item href="">
+                <Icon type="home" />
+              </Breadcrumb.Item>
+              <Breadcrumb.Item href="">
+                <Icon type="user" />
+                <span>Application List</span>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                Application
+              </Breadcrumb.Item>
+            </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              content
+              Bill is a cat.
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
@@ -62,14 +82,6 @@ class CoreLayout extends React.Component {
     );
   }
 }
-// export const CoreLayout = ({ children }) => (
-//   <div className='container text-center'>
-//     <Header />
-//     <div className='core-layout__viewport'>
-//       {children}
-//     </div>
-//   </div>
-// )
 
 CoreLayout.propTypes = {
   children: PropTypes.element.isRequired
