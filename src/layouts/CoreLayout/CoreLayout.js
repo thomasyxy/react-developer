@@ -13,7 +13,8 @@ class CoreLayout extends React.Component {
     super(props)
     this.state = assign({}, props, {
       collapsed: false,
-      mode: 'inline'
+      mode: 'inline',
+      activitySubIndex: ['sub1']
     })
   }
   onHandleToggle = () => {
@@ -21,24 +22,36 @@ class CoreLayout extends React.Component {
       collapsed: !this.state.collapsed
     })
   }
+  onOpenChange = (openKeys) => {
+    openKeys.shift()
+    this.setState({
+      activitySubIndex: openKeys
+    })
+  }
   render() {
+    const {
+      collapsed,
+      activitySubIndex
+    } = this.state
+
     return (
       <Layout className="sentry-layout">
         <Sider
           className="sentry-sider"
           trigger={null}
           collapsible
-          collapsed={this.state.collapsed}
+          collapsed={collapsed}
         >
-          <div className="logo" />
           <div className="menu-controler" onClick={this.onHandleToggle}>
-            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+            <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
           </div>
           <Menu
             className="sentry-menu"
             theme="dark"
             mode="inline"
             inlineIndent={16}
+            openKeys={activitySubIndex}
+            onOpenChange={this.onOpenChange}
           >
             <SubMenu
               className="menu-sub"
