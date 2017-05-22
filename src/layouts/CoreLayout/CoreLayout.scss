@@ -46,6 +46,12 @@
     .anticon {
       margin-left: 8px;
     }
+    .menu-item {
+      .anticon {
+        font-size: 16px;
+        margin-left: -8px;
+      }
+    }
     .nav-text {
       display: none;
     }

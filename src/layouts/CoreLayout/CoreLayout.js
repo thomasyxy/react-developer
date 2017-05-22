@@ -58,10 +58,22 @@ class CoreLayout extends React.Component {
               key="sub1"
               title={<span><Icon type="caret-down" /><span className="nav-text">前端监控室</span></span>}
             >
-              <Menu.Item className="menu-item" key="1">Issues</Menu.Item>
-              <Menu.Item className="menu-item" key="2">Overview</Menu.Item>
-              <Menu.Item className="menu-item" key="3">UserFeedback</Menu.Item>
-              <Menu.Item className="menu-item" key="4">Releases</Menu.Item>
+              <Menu.Item className="menu-item" key="1">
+                <Icon type="file" />
+                <span className="nav-text">Issues</span>
+              </Menu.Item>
+              <Menu.Item className="menu-item" key="2">
+                <Icon type="file" />
+                <span className="nav-text">Overview</span>
+              </Menu.Item>
+              <Menu.Item className="menu-item" key="3">
+                <Icon type="file" />
+                <span className="nav-text">UserFeedback</span>
+              </Menu.Item>
+              <Menu.Item className="menu-item" key="4">
+                <Icon type="file" />
+                <span className="nav-text">Releases</span>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               className="menu-sub"
