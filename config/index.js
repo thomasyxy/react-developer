@@ -58,7 +58,12 @@ const config = {
   coverage_reporters : [
     { type : 'text-summary' },
     { type : 'lcov', dir : 'coverage' }
-  ]
+  ],
+  // ant-design theme
+  theme: {
+    "primary-color": "#08acc1",
+    "info-color": "#08acc1"
+  }
 }
 
 /************************************************
