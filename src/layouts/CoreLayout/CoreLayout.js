@@ -17,12 +17,8 @@ class CoreLayout extends React.Component {
     })
   }
   onHandleToggle = () => {
-    const {
-      collapsed
-    } = this.state
-    debugger
     this.setState({
-      collapsed: !collapsed
+      collapsed: !this.state.collapsed
     })
   }
   render() {
@@ -36,7 +32,13 @@ class CoreLayout extends React.Component {
         >
           <div className="logo" />
           <div className="menu-controler" onClick={this.onHandleToggle}><Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} /></div>
-          <Menu className="sentry-menu" theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu
+            className="sentry-menu"
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            inlineIndent={16}
+          >
             <SubMenu
               className="menu-sub"
               key="sub1"
@@ -48,6 +50,7 @@ class CoreLayout extends React.Component {
               <Menu.Item className="menu-item" key="4">Releases</Menu.Item>
             </SubMenu>
             <SubMenu
+              className="menu-sub"
               key="sub2"
               title={<span><Icon type="team" /><span className="nav-text">Team</span></span>}
             >
