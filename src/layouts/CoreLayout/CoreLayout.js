@@ -31,12 +31,13 @@ class CoreLayout extends React.Component {
           collapsed={this.state.collapsed}
         >
           <div className="logo" />
-          <div className="menu-controler" onClick={this.onHandleToggle}><Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} /></div>
+          <div className="menu-controler" onClick={this.onHandleToggle}>
+            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+          </div>
           <Menu
             className="sentry-menu"
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={['1']}
             inlineIndent={16}
           >
             <SubMenu
@@ -52,17 +53,15 @@ class CoreLayout extends React.Component {
             <SubMenu
               className="menu-sub"
               key="sub2"
-              title={<span><Icon type="team" /><span className="nav-text">Team</span></span>}
+              title={<span><Icon type="caret-down" /><span className="nav-text">Team</span></span>}
             >
-              <Menu.Item key="4">Team 1</Menu.Item>
-              <Menu.Item key="5">Team 2</Menu.Item>
+              <Menu.Item key="6">
+                <span>
+                  <Icon type="file" />
+                  <span className="nav-text">File</span>
+                </span>
+              </Menu.Item>
             </SubMenu>
-            <Menu.Item key="6">
-              <span>
-                <Icon type="file" />
-                <span className="nav-text">File</span>
-              </span>
-            </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
