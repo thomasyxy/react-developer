@@ -16,7 +16,7 @@
     align-items: center;
     .anticon {
       margin: 0 8px;
-      color: #fff;
+      color: #000;
     }
   }
   .sentry-menu {
@@ -35,13 +35,11 @@
     }
   }
   .sentry-sider {
-
+    background: #fff;
   }
-  .sentry-header {
-    margin: 0 16px;
-    .header-breadcrumb {
-      margin: 12px 0;
-    }
+  .sentry-content-layout {
+    padding: 8px;
+    height: 100%;
   }
   .ant-layout-sider-collapsed{
     .anticon {

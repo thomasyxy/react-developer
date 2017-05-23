@@ -86,15 +86,12 @@ class CoreLayout extends React.Component {
             </SubMenu>
           </Menu>
         </Sider>
-        <Layout>
-          <Content style={{ margin: '0 16px' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+        <Layout className="sentry-content-layout">
+          <Content className="sentry-content">
+            <div>
               Bill is a cat.
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2016 Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
     );
