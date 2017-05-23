@@ -23,7 +23,7 @@ class CoreLayout extends React.Component {
     })
   }
   onOpenChange = (openKeys) => {
-    openKeys.shift()
+    openKeys.length > 1 && openKeys.shift()
     this.setState({
       activitySubIndex: openKeys
     })
@@ -47,7 +47,6 @@ class CoreLayout extends React.Component {
           </div>
           <Menu
             className="sentry-menu"
-            theme="dark"
             mode="inline"
             inlineIndent={16}
             openKeys={activitySubIndex}
@@ -80,22 +79,14 @@ class CoreLayout extends React.Component {
               key="sub2"
               title={<span><Icon type="caret-down" /><span className="nav-text">Team</span></span>}
             >
-              <Menu.Item key="6">
-                <span>
-                  <Icon type="file" />
-                  <span className="nav-text">File</span>
-                </span>
+              <Menu.Item className="menu-item" key="6">
+                <Icon type="file" />
+                <span className="nav-text">File</span>
               </Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
         <Layout>
-          <Content className="sentry-header">
-            <Breadcrumb className="header-breadcrumb">
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-          </Content>
           <Content style={{ margin: '0 16px' }}>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               Bill is a cat.
