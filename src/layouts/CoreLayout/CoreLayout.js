@@ -23,7 +23,9 @@ class CoreLayout extends React.Component {
     })
   }
   onOpenChange = (openKeys) => {
-    openKeys.length > 1 && openKeys.shift()
+    if(openKeys.length > 1) {
+      openKeys.shift()
+    }
     this.setState({
       activitySubIndex: openKeys
     })
@@ -55,7 +57,7 @@ class CoreLayout extends React.Component {
             <SubMenu
               className="menu-sub"
               key="sub1"
-              title={<span><Icon type="caret-down" /><span className="nav-text">前端监控室</span></span>}
+              title={<span><Icon type={activitySubIndex[0] === 'sub1' ? 'caret-down' : 'caret-right'} /><span className="nav-text">前端监控室</span></span>}
             >
               <Menu.Item className="menu-item" key="1">
                 <Icon type="file" />
