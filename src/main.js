@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import assign from 'object-assign'
 import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
+import config from './config'
 
 // ========================================================
 // Store Instantiation
 // ========================================================
-const initialState = window.___INITIAL_STATE__
+const initialState = assign({}, window.___INITIAL_STATE__, config)
 const store = createStore(initialState)
 
 // ========================================================
