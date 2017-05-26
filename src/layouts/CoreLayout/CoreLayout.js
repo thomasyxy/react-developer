@@ -4,7 +4,7 @@ import assign from 'object-assign'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 const { Header, Content, Footer, Sider } = Layout
 const SubMenu = Menu.SubMenu
-// import Header from '../../components/Header'
+import Config from '../../config'
 import './CoreLayout.scss'
 import '../../styles/core.scss'
 
@@ -14,7 +14,7 @@ class CoreLayout extends React.Component {
     this.state = assign({}, props, {
       collapsed: false,
       mode: 'inline',
-      activitySubIndex: ['sub1']
+      activitySubIndex: ['sub0']
     })
   }
   onHandleToggle = () => {
@@ -54,38 +54,24 @@ class CoreLayout extends React.Component {
             openKeys={activitySubIndex}
             onOpenChange={this.onOpenChange}
           >
-            <SubMenu
-              className="menu-sub"
-              key="sub1"
-              title={<span><Icon type={activitySubIndex[0] === 'sub1' ? 'caret-down' : 'caret-right'} /><span className="nav-text">前端监控室</span></span>}
-            >
-              <Menu.Item className="menu-item" key="1">
-                <Icon type="file" />
-                <span className="nav-text">Issues</span>
-              </Menu.Item>
-              <Menu.Item className="menu-item" key="2">
-                <Icon type="file" />
-                <span className="nav-text">Overview</span>
-              </Menu.Item>
-              <Menu.Item className="menu-item" key="3">
-                <Icon type="file" />
-                <span className="nav-text">UserFeedback</span>
-              </Menu.Item>
-              <Menu.Item className="menu-item" key="4">
-                <Icon type="file" />
-                <span className="nav-text">Releases</span>
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu
-              className="menu-sub"
-              key="sub2"
-              title={<span><Icon type="caret-down" /><span className="nav-text">Team</span></span>}
-            >
-              <Menu.Item className="menu-item" key="6">
-                <Icon type="file" />
-                <span className="nav-text">File</span>
-              </Menu.Item>
-            </SubMenu>
+            {
+              Config.MENUDATA.data.map((i, index1) =>
+                <SubMenu
+                  className="menu-sub"
+                  key={`sub${index1}`}
+                  title={<span><Icon type={activitySubIndex[0] === `sub${index1}` ? 'caret-down' : 'caret-right'} /><span className="nav-text">{i.title}</span></span>}
+                >
+                  {
+                    i.list & i.list.map((j, index2) =>
+                      <Menu.Item className="menu-item" key={`item${index2}`}>
+                        <Icon type="file" />
+                        <span className="nav-text">{j.title}</span>
+                      </Menu.Item>
+                    )
+                  }
+                </SubMenu>
+              )
+            }
           </Menu>
         </Sider>
         <Layout className="sentry-content-layout">
