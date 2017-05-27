@@ -134,4 +134,4 @@ if (overrides) {
   debug('No environment overrides found, defaults will be used.')
 }
 
-module.exports = config1
+module.exports = config
