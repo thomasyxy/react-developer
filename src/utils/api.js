@@ -2,15 +2,9 @@
 
 // 测试接口
 const GET_INIT_DATA = {
-  local: '/mock/init-page.json',
+  local: '/mock/log.json',
   type: 'GET'
 }
-
-
-
-
-
-
 
 export default {
     DEFAULT,
