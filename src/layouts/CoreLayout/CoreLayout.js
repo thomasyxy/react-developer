@@ -37,9 +37,9 @@ class CoreLayout extends React.Component {
     } = this.state
 
     return (
-      <Layout className="sentry-layout">
+      <Layout className="developer-layout">
         <Sider
-          className="sentry-sider"
+          className="developer-sider"
           trigger={null}
           collapsible
           collapsed={collapsed}
@@ -48,7 +48,7 @@ class CoreLayout extends React.Component {
             <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
           </div>
           <Menu
-            className="sentry-menu"
+            className="developer-menu"
             mode="inline"
             inlineIndent={16}
             openKeys={activitySubIndex}
@@ -74,8 +74,8 @@ class CoreLayout extends React.Component {
             }
           </Menu>
         </Sider>
-        <Layout className="sentry-content-layout">
-          <Content className="sentry-content">
+        <Layout className="developer-content-layout">
+          <Content className="developer-content">
             <div>
               Bill is a cat.
             </div>
