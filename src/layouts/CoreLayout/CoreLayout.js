@@ -6,7 +6,7 @@ import Divider from 'material-ui/Divider';
 import InboxIcon from 'material-ui-icons/Inbox';
 import DraftsIcon from 'material-ui-icons/Drafts';
 
-const styleSheet = createStyleSheet('SimpleList', theme => ({
+const styleSheet = createStyleSheet('CoreLayout', theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
@@ -14,7 +14,7 @@ const styleSheet = createStyleSheet('SimpleList', theme => ({
   },
 }));
 
-function SimpleList(props) {
+function CoreLayout(props) {
   const classes = props.classes;
   return (
     <div className={classes.root}>
