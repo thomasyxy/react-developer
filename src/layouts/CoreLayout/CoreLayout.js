@@ -1,46 +1,52 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import assign from 'object-assign'
-import Config from '../../config'
-import './CoreLayout.scss'
-import '../../styles/core.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import InboxIcon from 'material-ui-icons/Inbox';
+import DraftsIcon from 'material-ui-icons/Drafts';
 
-class CoreLayout extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = assign({}, props, {
-      collapsed: false,
-      mode: 'inline',
-      activitySubIndex: ['sub0']
-    })
-  }
-  onHandleToggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    })
-  }
-  onOpenChange = (openKeys) => {
-    if(openKeys.length > 1) {
-      openKeys.shift()
-    }
-    this.setState({
-      activitySubIndex: openKeys
-    })
-  }
-  render() {
-    const {
-      collapsed,
-      activitySubIndex
-    } = this.state
+const styleSheet = createStyleSheet('SimpleList', theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    background: theme.palette.background.paper,
+  },
+}));
 
-    return (
-      <div></div>
-    );
-  }
+function SimpleList(props) {
+  const classes = props.classes;
+  return (
+    <div className={classes.root}>
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Drafts" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button>
+          <ListItemText primary="Trash" />
+        </ListItem>
+        <ListItem button component="a" href="#simple-list">
+          <ListItemText primary="Spam" />
+        </ListItem>
+      </List>
+    </div>
+  );
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.element.isRequired
-}
-
-export default CoreLayout
+  classes: PropTypes.object.isRequired,
+};
+export
+default withStyles(styleSheet)(CoreLayout);
